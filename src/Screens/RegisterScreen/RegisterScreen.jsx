@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import useForm from '../../hook/useForm'
-import { register } from '../services/authService'
+import { register } from '../../services/authService'
 import useFetch from '../../hook/useFetch'
 
 
