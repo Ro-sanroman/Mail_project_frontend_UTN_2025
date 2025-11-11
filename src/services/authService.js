@@ -42,7 +42,7 @@ export async function login (email, password){
         } 
     
         const response_http = await fetch(
-                ENVIRONMENT.URL_API + '/api/auth/login',
+                ENVIRONMENT + '/api/auth/login',
             {
                 method: 'POST',
                 headers: {
