@@ -3,10 +3,16 @@ import { useLocation, useNavigate } from 'react-router'
 import { login } from '../../services/authService'
 import useForm from '../../hook/useForm'
 import useFetch from '../../hook/useFetch'
+import { useContext } from 'react'
+import { AuthContext } from '../../context/authContext'
+import ENVIRONMENT from '../../config/enviroment'
 
 const LoginScreen = () => {
   const navigate = useNavigate()
   const location = useLocation()
+  const {onLogin: onLoginContext} = useContext(AuthContext)
+  
+  console.log('[LoginScreen] Montado, ENVIRONMENT.URL_API:', ENVIRONMENT.URL_API)
   
   useEffect(
     () => {
@@ -32,9 +38,11 @@ const LoginScreen = () => {
     const { response, error, loading, sendRequest, resetResponse } = useFetch()
 
     function onLogin(form_state_sent) {
+        console.log('[LoginScreen] onLogin ejecutado con:', { email: form_state_sent[LOGIN_FORM_FIELDS.EMAIL], hasPassword: !!form_state_sent[LOGIN_FORM_FIELDS.PASSWORD] })
         resetResponse()
         sendRequest(
             () => {
+                console.log('[LoginScreen] Llamando a login()...')
                 return login(
                     form_state_sent[LOGIN_FORM_FIELDS.EMAIL],
                     form_state_sent[LOGIN_FORM_FIELDS.PASSWORD]
@@ -52,10 +60,17 @@ const LoginScreen = () => {
 
     useEffect(
         () => {
-          if(response && response.ok){
-            //Queremos que persista en memoria el auth token
-            localStorage.setItem('auth_token', response.body.auth_token)
-            navigate('/home')
+          if(response){
+            if(response.ok){
+              //Queremos que persista en memoria el auth token
+              const token = response.body?.auth_token || response.auth_token
+              if(token) localStorage.setItem('auth_token', token)
+              navigate('/home')
+            }
+            else {
+              // response.ok === false -> show server message via useFetch error UI (we don't set error state here)
+              // nothing to do programmatically
+            }
           }
         },
         [response]
@@ -74,7 +89,8 @@ const LoginScreen = () => {
           </div>
 
           {error && <span style={{ color: 'red' }}> {error} </span>}
-          {response && <span style={{ color: 'green' }}> Successful Login </span>}
+          {response && !response.ok && <span style={{ color: 'red' }}> {response.message || 'Error en el servidor'} </span>}
+          {response && response.ok && <span style={{ color: 'green' }}> Successful Login </span>}
 
           {
             loading
