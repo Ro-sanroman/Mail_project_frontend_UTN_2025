@@ -1,11 +1,9 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useContext } from 'react'
 import { useLocation, useNavigate } from 'react-router'
 import { login } from '../../services/authService'
 import useForm from '../../hook/useForm'
 import useFetch from '../../hook/useFetch'
-import { useContext } from 'react'
 import { AuthContext } from '../../context/authContext'
-import ENVIRONMENT from '../../config/enviroment'
 
 const LoginScreen = () => {
   const navigate = useNavigate()
@@ -91,5 +89,4 @@ const LoginScreen = () => {
       )
 }
 
-
-      export default LoginScreen
+export default LoginScreen

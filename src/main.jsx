@@ -11,3 +11,12 @@ createRoot(document.getElementById('root')).render(
     </AuthContextProvider>
   </BrowserRouter>
 )
+// Global error handlers to surface runtime errors in the console
+if (typeof window !== 'undefined'){
+  window.addEventListener('error', (evt) => {
+    console.error('[GLOBAL ERROR]', evt.message, evt.error)
+  })
+  window.addEventListener('unhandledrejection', (evt) => {
+    console.error('[UNHANDLED REJECTION]', evt.reason)
+  })
+}
