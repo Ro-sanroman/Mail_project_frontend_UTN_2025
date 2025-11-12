@@ -10,10 +10,7 @@ import ENVIRONMENT from '../../config/enviroment'
 const LoginScreen = () => {
   const navigate = useNavigate()
   const location = useLocation()
-  const {onLogin: onLoginContext} = useContext(AuthContext)
-  
-  console.log('[LoginScreen] Montado, ENVIRONMENT.URL_API:', ENVIRONMENT.URL_API)
-  
+  const {onLogin} = useContext(AuthContext)
   useEffect(
     () => {
       const query = new URLSearchParams(location.search)
@@ -24,6 +21,7 @@ const LoginScreen = () => {
     },
     [] //Solo queremos que se ejecute cuando se monte el componente
   )
+  
 
   const LOGIN_FORM_FIELDS = {
         EMAIL: 'email',
@@ -37,12 +35,10 @@ const LoginScreen = () => {
 
     const { response, error, loading, sendRequest, resetResponse } = useFetch()
 
-    function onLogin(form_state_sent) {
-        console.log('[LoginScreen] onLogin ejecutado con:', { email: form_state_sent[LOGIN_FORM_FIELDS.EMAIL], hasPassword: !!form_state_sent[LOGIN_FORM_FIELDS.PASSWORD] })
+    function handleLogin(form_state_sent) {
         resetResponse()
         sendRequest(
             () => {
-                console.log('[LoginScreen] Llamando a login()...')
                 return login(
                     form_state_sent[LOGIN_FORM_FIELDS.EMAIL],
                     form_state_sent[LOGIN_FORM_FIELDS.PASSWORD]
@@ -56,21 +52,15 @@ const LoginScreen = () => {
         onInputChange,
         handleSubmit,
         resetForm
-    } = useForm(initial_form_state, onLogin)
+    } = useForm(initial_form_state, handleLogin)
 
     useEffect(
         () => {
-          if(response){
-            if(response.ok){
-              //Queremos que persista en memoria el auth token
-              const token = response.body?.auth_token || response.auth_token
-              if(token) localStorage.setItem('auth_token', token)
-              navigate('/home')
-            }
-            else {
-              // response.ok === false -> show server message via useFetch error UI (we don't set error state here)
-              // nothing to do programmatically
-            }
+          if(response && response.ok){
+            //Queremos que persista en memoria el auth token
+            //Dejamos que el context se encargue de que sucedera
+            onLogin(response.body.auth_token)
+            
           }
         },
         [response]
@@ -80,7 +70,7 @@ const LoginScreen = () => {
         <form onSubmit={handleSubmit}>
           <div className="form-field">
             <label htmlFor="email">Email: </label>
-            <input type="text" placeholder="jose@algo.com" value={form_state[LOGIN_FORM_FIELDS.EMAIL]} name={LOGIN_FORM_FIELDS.EMAIL} onChange={onInputChange} id={'email'} />
+            <input  type="text" placeholder="jose@algo.com" value={form_state[LOGIN_FORM_FIELDS.EMAIL]} name={LOGIN_FORM_FIELDS.EMAIL} onChange={onInputChange} id={'email'} />
           </div>
 
           <div>
@@ -89,17 +79,17 @@ const LoginScreen = () => {
           </div>
 
           {error && <span style={{ color: 'red' }}> {error} </span>}
-          {response && !response.ok && <span style={{ color: 'red' }}> {response.message || 'Error en el servidor'} </span>}
-          {response && response.ok && <span style={{ color: 'green' }}> Successful Login </span>}
+          {response && <span style={{ color: 'green' }}> Successful Login </span>}
 
           {
             loading
-              ? <button disabled>Login In</button>
+              ? <button disabled>Loggin In</button>
               : <button>Login</button>
           }
         </form>
       </div>
       )
 }
+
 
       export default LoginScreen

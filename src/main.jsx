@@ -11,7 +11,9 @@ console.log('[MAIN] ENVIRONMENT.URL_API:', ENVIRONMENT.URL_API)
 console.log('[MAIN] import.meta.env:', Object.keys(import.meta.env))
 
 createRoot(document.getElementById('root')).render(
-    <BrowserRouter>
-        <App />
-    </BrowserRouter>
+  <BrowserRouter>
+    <AuthContextProvider>
+      <App />
+    </AuthContextProvider>
+  </BrowserRouter>
 )
