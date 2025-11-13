@@ -1,4 +1,4 @@
-import ENVIRONMENT from "../config/environment";
+import ENVIRONMENT from "../config/enviroment.js";
 import { AUTH_TOKEN_KEY } from "../context/authContext.jsx";
 
 //Obtiene la lista de canales
