@@ -9,15 +9,23 @@ const useFetch = () => {
         setError(null)
         setLoading(true)
         try{
+            console.log('[useFetch] sendRequest started')
             const response = await requestCallback()
+            console.log('[useFetch] Response received:', response)
 
-            if(!response.ok){
-                throw new Error(response.message || 'Error desconocido')
+            // Only treat as error if explicitly ok: false (from auth endpoints)
+            // For other endpoints that don't send ok, just pass through
+            if(response && response.ok === false){
+                console.error('[useFetch] Response indicates error:', response.message)
+                setError(response.message || 'Error desconocido')
+                return
             }
+            
             setResponse(response)
         }
         catch(error){
-            setError(error.message)
+            console.error('[useFetch] Catch error:', error)
+            setError(error.message || 'Error desconocido')
         }
         finally{
             setLoading(false)
