@@ -1,4 +1,4 @@
-import ENVIRONMENT from "../config/environment";
+import ENVIRONMENT from "../config/enviroment.js";
 
 export async function getWorkspaces () {
     const response_http = await fetch(
