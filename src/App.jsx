@@ -16,7 +16,8 @@ function App() {
       <Route path='/register' element={<RegisterScreen/>}/>
       <Route element={<AuthMiddleware/>} >
         <Route path='/home' element={<HomeScreen/>}/>
-        {/* Workspace routes removed because WorkspaceScreen component is not present */}
+        <Route path='/workspace/:workspace_id' element={<WorkspaceScreen/>}/>
+        <Route path='/workspace/:workspace_id/:channel_id' element={<WorkspaceScreen/>}/>
       </Route>
     </Routes>
    </div>
