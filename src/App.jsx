@@ -4,6 +4,7 @@ import LoginScreen from "./Screens/LoginScreen/LoginScreen.jsx"
 import RegisterScreen from "./Screens/RegisterScreen/RegisterScreen.jsx"
 import HomeScreen from "./Screens/HomeScreen/HomeScreen.jsx"
 import AuthMiddleware from "./middleware/authMiddleware.jsx"
+import WorkspaceScreen from "./Screens/WorkspaceScreen/WorkspaceScreen.jsx"
 
 function App() {
  
