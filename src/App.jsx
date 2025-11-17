@@ -19,6 +19,7 @@ function App() {
         <Route path='/home' element={<HomeScreen/>}/>
         <Route path='/workspace/:workspace_id' element={<WorkspaceScreen/>}/>
         <Route path='/workspace/:workspace_id/:channel_id' element={<WorkspaceScreen/>}/>
+        <Route path='/workspace/:workspace_id/:channel_id/messages' element={<WorkspaceScreen/>}/>
       </Route>
     </Routes>
    </div>

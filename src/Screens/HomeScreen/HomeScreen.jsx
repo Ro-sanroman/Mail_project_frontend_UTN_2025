@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import useFetch from '../../hook/useFetch.jsx'
 import { getWorkspaces } from '../../services/workspaceService.js'
 import { Link } from 'react-router'
+import "./HomeScreen.css"
 
 
 const HomeScreen = () => {

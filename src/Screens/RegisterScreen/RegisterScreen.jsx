@@ -52,13 +52,13 @@ const RegisterScreen = () => {
     
   return (
     <div>
-        <h1>Registrate</h1>
+        <h1>Registrate!</h1>
         <form onSubmit={handleSubmit}>
             <div className='form-field'>
                 <label htmlFor="username">Nombre de usuario:</label>
                 <input 
                     type="text" 
-                    placeholder='pepe' 
+                    placeholder='name' 
                     value={form_state[REGISTER_FORM_FIELDS.USERNAME]}
                     name={REGISTER_FORM_FIELDS.USERNAME}
                     id='username'
@@ -69,7 +69,7 @@ const RegisterScreen = () => {
                 <label htmlFor="email">Email:</label>
                 <input 
                     type="text" 
-                    placeholder='pepe@mail.com' 
+                    placeholder='name@gmail.com' 
                     value={form_state[REGISTER_FORM_FIELDS.EMAIL]}
                     name={REGISTER_FORM_FIELDS.EMAIL}
                     onChange={onInputChange}
@@ -80,7 +80,7 @@ const RegisterScreen = () => {
                 <label htmlFor="password">Contraseña:</label>
                 <input 
                     type="text" 
-                    placeholder='pepe-123' 
+                    placeholder='password123' 
                     value={form_state[REGISTER_FORM_FIELDS.PASSWORD]}
                     name={REGISTER_FORM_FIELDS.PASSWORD}
                     onChange={onInputChange}
