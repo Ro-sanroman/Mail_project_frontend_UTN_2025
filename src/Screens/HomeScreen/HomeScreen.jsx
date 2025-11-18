@@ -20,29 +20,29 @@ const HomeScreen = () => {
 
   console.log(response, loading, error)
   return (
-    <div>
-      <h1>Lista de espacios de trabajo</h1>
-      {
-        loading
-        ? <span>Cargando...</span>
-        : <div>
-          {
-          response 
-          && 
-          response.data.workspaces.map(
+   <div className="screen-container">
+    <h1 className="header-title">Lista de espacios de trabajo</h1>
+    {
+    loading
+    ? <span className="loading-message">Cargando...</span>
+    : <div className="workspace-list">
+        {
+        response
+        &&
+        response.data.workspaces.map(
             (workspace) => {
-              return (
-                <div>
-                  <h2>{workspace.workspace_name}</h2>
-                  <Link to={'/workspace/' + workspace.workspace_id}>Abrir workspace</Link>
-                </div>
-              )
+                return (
+                    <div key={workspace.workspace_id} className="workspace-card">
+                        <h2 className="workspace-name">{workspace.workspace_name}</h2>
+                        <Link to={'/workspace/' + workspace.workspace_id} className="workspace-button">Abrir workspace</Link>
+                    </div>
+                )
             }
-          )
-          }
-        </div>
-      }
+        )
+        }
     </div>
+    }
+</div>
   )
 }
 

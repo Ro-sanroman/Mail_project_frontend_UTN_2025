@@ -1,0 +1,86 @@
+:root {
+    --dark-fond: #36393f; 
+    --sidebar-color: #2f3136; 
+    --text-color: #dcddde; 
+    --highlight-color: #5865f2; 
+    --hover-color: #4f545c; 
+    --text-font: 'Whitney', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.screen-container {
+    background-color: var(--dark-fond);
+    color: var(--text-color);
+    font-family: var(--discord-font);
+    min-height: 100vh; 
+    padding: 20px;
+}
+
+.header-title {
+    color: var(--text-color);
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #4f545c;
+    padding-bottom: 10px;
+}
+
+.loading-message {
+    font-size: 16px;
+    font-style: italic;
+    color: #99aab5;
+}
+
+.workspace-list {
+    display: flex; 
+    gap: 15px; 
+    flex-direction: column;
+    max-width: 600px; 
+}
+
+.workspace-card {
+    background-color: var(--sidebar-color); 
+    padding: 15px;
+    border-radius: 8px; 
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2); 
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.workspace-card:hover {
+    background-color: var(--hover-color);
+    transform: translateY(-2px); 
+}
+
+.workspace-name {
+    color: var(--text-color);
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+
+.workspace-button {
+    display: inline-block;
+    background-color: var(--highlight-color);
+    color: white; 
+    text-decoration: none; 
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+}
+
+.workspace-link:hover {
+    background-color: #677bc4;
+}

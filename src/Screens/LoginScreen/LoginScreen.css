@@ -37,7 +37,7 @@
 .form-container .title {
     font-size: 24px;
     font-weight: 700;
-    color: #fff;
+    color: #dcddde;
     margin-bottom: 8px;
     margin-top: 0;
 }
@@ -86,7 +86,7 @@ input[type="password"]:focus {
 .button-login-wrapper {
     width: 100%;
     background-color: #5865f2; 
-    color: #fff;
+    color: #dcddde;;
     border: none;
     border-radius: 8px;
     padding: 10px 20px;
@@ -99,7 +99,7 @@ input[type="password"]:focus {
 .login-button{
     background-color: transparent;
     border: none;
-    color: white;
+    color: #dcddde;
     font-size: 16px;
     font-weight: 400;   
     cursor: pointer;
@@ -114,7 +114,7 @@ input[type="password"]:focus {
 .button-register-wrapper {
     width: 100%;
     background-color: #5865f2; 
-    color: #fff;
+    color: #dcddde;
     border: none;
     border-radius: 8px;
     padding: 10px 20px;
@@ -133,7 +133,7 @@ input[type="password"]:focus {
 }
 
 .register-button a{
-    color: white;
+    color: #dcddde;
     text-decoration: none;
 }
 

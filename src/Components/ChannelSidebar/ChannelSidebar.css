@@ -1,0 +1,46 @@
+:root {
+    --sidebar-color: #2f3136; 
+    --text-color: #dcddde; 
+    --red-color: #f04747; 
+    --text-font: 'Whitney', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+
+.channel-sidebar {
+    width: 240px;
+    background-color: var(--sidebar-color);
+    color: var(--text-color);
+    padding: 10px 0; 
+    font-family: var(--text-font);
+    height: 100vh;
+    overflow-y: auto; 
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+}
+
+
+.sidebar-title {
+    color: #99aab5;
+    font-size: 16px;
+    font-weight: 600;
+    text-transform: uppercase; 
+    margin-top: 15px;
+    margin-bottom: 5px;
+    padding: 0px 20px 10px;
+}
+
+
+.loading-message {
+    font-size: 14px;
+    font-style: italic;
+    color: #99aab5;
+    display: block; 
+    padding: 5px 10px;
+}
+
+.error-message {
+    font-size: 14px;
+    color: var(--red-color);
+    display: block;
+    padding: 5px 10px;
+    font-weight: 500;
+}
