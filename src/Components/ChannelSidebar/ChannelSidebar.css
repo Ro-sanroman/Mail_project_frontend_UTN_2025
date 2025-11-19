@@ -28,6 +28,35 @@
     padding: 0px 20px 10px;
 }
 
+.channel-actions {
+    padding: 0 20px 10px;
+}
+
+.create-channel-button {
+    width: 100%;
+    background: #5865f2; /* similar a highlight */
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color .2s ease, transform .08s ease;
+}
+
+.create-channel-button:hover {
+    background: #4752c4;
+}
+
+.create-channel-button:active {
+    transform: translateY(1px);
+}
+
+.create-channel-button:disabled {
+    opacity: .6;
+    cursor: not-allowed;
+}
+
 
 .loading-message {
     font-size: 14px;

@@ -15,6 +15,36 @@
     padding: 20px;
 }
 
+/* Layout con sidebar a la izquierda */
+.home-layout {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.home-sidebar {
+    width: 280px;
+    background: var(--sidebar-color);
+    border-radius: 10px;
+    padding: 16px;
+    height: calc(100vh - 40px);
+    position: sticky;
+    top: 20px;
+    align-self: flex-start;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+.sidebar-title {
+    margin: 0 0 10px 0;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.home-content {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
 .header-title {
     color: var(--text-color);
     font-size: 24px;
@@ -22,6 +52,49 @@
     margin-bottom: 20px;
     border-bottom: 1px solid #4f545c;
     padding-bottom: 10px;
+}
+
+/* Formulario de creación de workspace */
+.workspace-create {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+
+}
+
+.workspace-input {
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid #4f545c;
+    background: #2f3136;
+    color: var(--text-color);
+    outline: none;
+}
+
+.workspace-input::placeholder {
+    color: #99aab5;
+}
+
+.workspace-create-button {
+    background: var(--highlight-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.workspace-create-button:disabled {
+    opacity: .6;
+    cursor: not-allowed;
+}
+
+.workspace-error {
+    color: #ff6b6b;
+    margin-bottom: 10px;
 }
 
 .loading-message {

@@ -51,51 +51,61 @@ const RegisterScreen = () => {
     
     
   return (
-    <div>
-        <h1>Registrate!</h1>
-        <form onSubmit={handleSubmit}>
-            <div className='form-field'>
-                <label htmlFor="username">Nombre de usuario:</label>
-                <input 
-                    type="text" 
-                    placeholder='name' 
-                    value={form_state[REGISTER_FORM_FIELDS.USERNAME]}
-                    name={REGISTER_FORM_FIELDS.USERNAME}
-                    id='username'
-                    onChange={onInputChange}
-                />
+    <div className="screen">
+      <div className="register-screen">
+        <div className="form-container">
+          <h2 className="title">Registrate</h2>
+          <form onSubmit={handleSubmit} className="register-form">
+            <div className='form-field input-group'>
+              <label htmlFor="username" className="label">Nombre de usuario:</label>
+              <input 
+                type="text" 
+                placeholder='name' 
+                value={form_state[REGISTER_FORM_FIELDS.USERNAME]}
+                name={REGISTER_FORM_FIELDS.USERNAME}
+                id='username'
+                onChange={onInputChange}
+                className="input"
+              />
             </div>
-            <div className='form-field'>
-                <label htmlFor="email">Email:</label>
-                <input 
-                    type="text" 
-                    placeholder='name@gmail.com' 
-                    value={form_state[REGISTER_FORM_FIELDS.EMAIL]}
-                    name={REGISTER_FORM_FIELDS.EMAIL}
-                    onChange={onInputChange}
-                    id={'email'}
-                />
+            <div className='form-field input-group'>
+              <label htmlFor="email" className="label">Email:</label>
+              <input 
+                type="text" 
+                placeholder='name@gmail.com' 
+                value={form_state[REGISTER_FORM_FIELDS.EMAIL]}
+                name={REGISTER_FORM_FIELDS.EMAIL}
+                onChange={onInputChange}
+                id={'email'}
+                className="input"
+              />
             </div>
-            <div className='form-field'>
-                <label htmlFor="password">Contraseña:</label>
-                <input 
-                    type="text" 
-                    placeholder='password123' 
-                    value={form_state[REGISTER_FORM_FIELDS.PASSWORD]}
-                    name={REGISTER_FORM_FIELDS.PASSWORD}
-                    onChange={onInputChange}
-                    id={'password'}
-                />
+            <div className='form-field input-group'>
+              <label htmlFor="password" className="label">Contraseña:</label>
+              <input 
+                type="password" 
+                placeholder='password123' 
+                value={form_state[REGISTER_FORM_FIELDS.PASSWORD]}
+                name={REGISTER_FORM_FIELDS.PASSWORD}
+                onChange={onInputChange}
+                id={'password'}
+                className="input"
+              />
             </div>
-            {error && <span style={{color: 'red'}}> {error} </span>}
-            {response && <span style={{color: 'green'}}> Usuario registrado con exito! </span>}
-            {
+            <div>
+              {error && <span className="error-message"> {error} </span>}
+              {response && <span className="success-message"> Usuario registrado con éxito </span>}
+            </div>
+            <div className="button-group">
+              {
                 loading 
-                ? <button disabled>Registrando</button>
-                : <button>Registrarse</button>
-            }
-            
-        </form>
+                ? <button className="register-button" disabled>Registrando</button>
+                : <button className="register-button" type="submit">Registrarse</button>
+              }
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   )
 }
