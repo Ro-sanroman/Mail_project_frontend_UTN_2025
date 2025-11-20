@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import useForm from '../../hook/useForm'
 import { register } from '../../services/authService'
 import useFetch from '../../hook/useFetch'
+import './RegisterScreen.css'
 
 
 
@@ -97,11 +98,13 @@ const RegisterScreen = () => {
               {response && <span className="success-message"> Usuario registrado con éxito </span>}
             </div>
             <div className="button-group">
+              <div className="register-button-wrapper">
               {
                 loading 
                 ? <button className="register-button" disabled>Registrando</button>
                 : <button className="register-button" type="submit">Registrarse</button>
               }
+              </div>
             </div>
           </form>
         </div>

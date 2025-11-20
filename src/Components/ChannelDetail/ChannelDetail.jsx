@@ -117,13 +117,19 @@ const ChannelDetail = () => {
 
     return (
     <div className="message-wrap">
+      <div
+        className={`message-author-row ${
+          author === "Yo" || author === "Me" || author === "usuario" ? "me" : "other"
+        }`}
+      >
+        <span className="message-author">{author}</span>
+      </div>
       <li
         key={m._id || m.id}
         className={`message-item bubble ${
           author === "Yo" || author === "Me" || author === "usuario" ? "me" : "other"
         }`}
       >
-        <span className="message-author">{author}</span>
         <span className="message-content">{content}</span>
       </li>
     </div>
