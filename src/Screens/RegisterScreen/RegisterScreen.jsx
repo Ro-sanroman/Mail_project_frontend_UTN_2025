@@ -95,7 +95,7 @@ const RegisterScreen = () => {
             </div>
             <div>
               {error && <span className="error-message"> {error} </span>}
-              {response && <span className="success-message"> Usuario registrado con éxito </span>}
+              {response && <span className="success-message"> Usuario registrado con éxito. Dirigete a tu bandeja de entrada para verificar tu usuario </span>}
             </div>
             <div className="button-group">
               <div className="register-button-wrapper">
