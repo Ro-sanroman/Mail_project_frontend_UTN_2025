@@ -1,9 +1,9 @@
 import React, { useEffect, useContext } from "react";
 import { useLocation, useNavigate } from "react-router";
-import { login } from "../../services/authService";
-import useForm from "../../hook/useForm";
-import useFetch from "../../hook/useFetch";
-import { AuthContext } from "../../context/authContext";
+import { login } from "../../services/authService.js";
+import useForm from "../../hook/useForm.jsx";
+import useFetch from "../../hook/useFetch.jsx";
+import { AuthContext } from "../../context/authContext.jsx";
 import "./LoginScreen.css";
 
 const LoginScreen = () => {
@@ -34,7 +34,6 @@ const LoginScreen = () => {
   const { response, error, loading, sendRequest, resetResponse } = useFetch();
 
   function handleLogin(form_state_sent) {
-    resetResponse();
     sendRequest(() => {
       return login(
         form_state_sent[LOGIN_FORM_FIELDS.EMAIL],
@@ -56,7 +55,7 @@ const LoginScreen = () => {
     }
   }, [response]);
   return (
-    <div className="screen">
+     <div className="screen">
       <div className="login-screen">
         <div className="form-container">
           <h2 className="title">Bienvenido!</h2>
