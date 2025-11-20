@@ -38,6 +38,9 @@
     margin: 0 0 10px 0;
     font-size: 18px;
     font-weight: 700;
+    display: flex;
+    text-align: center;
+    justify-content: center;
 }
 
 .home-content {
@@ -61,7 +64,8 @@
     align-items: center;
     gap: 10px;
     margin-bottom: 18px;
-
+    border-bottom: #2b2727 solid 1px;
+    padding-bottom: 18px;
 }
 
 .workspace-input {
@@ -95,6 +99,72 @@
 .workspace-error {
     color: #ff6b6b;
     margin-bottom: 10px;
+}
+
+.workspace-invite {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 12px; 
+}
+
+.workspace-select {
+    background: #2f3136;
+    color: var(--text-color);
+    border: 1px solid #4f545c;
+    border-radius: 8px;
+    padding: 10px 12px;
+    outline: none;
+}
+
+.workspace-select:focus {
+    border-color: var(--highlight-color);
+}
+
+.workspace-success {
+    color: #3ba55d;
+    font-size: 14px;
+}
+
+/* Estado vacío: no hay workspaces (estilo parecido al del canal no seleccionado) */
+.empty-workspaces {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 260px;
+    padding: 24px;
+    background: var(--sidebar-color);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+}
+
+.empty-icon {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 10px auto;
+    border-radius: 14px;
+    background: #4752c4;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 26px;
+}
+
+.empty-title {
+    margin: 6px 0 4px 0;
+    font-size: 20px;
+    color: var(--text-color);
+    font-weight: 700;
+}
+
+.empty-subtitle {
+    margin: 0;
+    font-size: 14px;
+    color: #99aab5;
 }
 
 .loading-message {

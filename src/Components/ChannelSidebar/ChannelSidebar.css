@@ -33,6 +33,55 @@
     border-bottom: #202225 1px solid;
 }
 
+.invite-form{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px 20px 12px 20px;
+    border-bottom: #202225 1px solid;
+}
+
+.invite-title{
+    margin: 8px 0 0 0;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #99aab5;
+}
+
+.invite-input,
+.invite-select{
+    background-color: #202225;
+    color: #dcddde;
+    border: 1px solid #2f3136;
+    border-radius: 8px;
+    padding: 8px 10px;
+    outline: none;
+}
+
+.invite-input:focus,
+.invite-select:focus{
+    border-color: #5865f2;
+}
+
+.invite-button{
+    background: #5865f2;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.invite-button:disabled{
+    opacity: .6;
+    cursor: not-allowed;
+}
+
+.success-message{
+    color: #3ba55d;
+    font-size: 12px;
+}
 .create-channel-button {
     width: 100%;
     background: #5865f2; /* similar a highlight */

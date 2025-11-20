@@ -70,6 +70,7 @@ const ChannelSidebar = () => {
             </button>
             {createError && <span className="error-message">{createError}</span>}
         </form>
+
         {
             loading && <span className="loading-message">Cargando...</span>
         }
