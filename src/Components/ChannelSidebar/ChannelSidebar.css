@@ -1,164 +1,161 @@
 :root {
-    --sidebar-color: #2f3136; 
-    --text-color: #dcddde; 
-    --red-color: #f04747; 
-    --text-font: 'Whitney', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --sidebar-color: #2f3136;
+  --text-color: #dcddde;
+  --red-color: #f04747;
+  --text-font: "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
-
 
 .channel-sidebar {
-    width: 240px;
-    background-color: var(--sidebar-color);
-    color: var(--text-color);
-    padding: 10px 0; 
-    font-family: var(--text-font);
-    height: 100vh;
-    overflow-y: auto; 
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+  width: 240px;
+  background-color: var(--sidebar-color);
+  color: var(--text-color);
+  padding: 10px 0;
+  font-family: var(--text-font);
+  height: 100vh;
+  overflow-y: auto;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
 }
 
-
 .sidebar-title {
-    color: #99aab5;
-    font-size: 16px;
-    font-weight: 600;
-    text-transform: uppercase; 
-    margin-top: 15px;
-    margin-bottom: 5px;
-    padding: 0px 20px 10px;
+  color: #99aab5;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  padding: 0px 20px 10px;
 }
 
 .channel-actions {
-    padding: 0 20px 10px;
-    border-bottom: #202225 1px solid;
+  padding: 0 20px 10px;
+  border-bottom: #202225 1px solid;
 }
 
-.invite-form{
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    padding: 10px 20px 12px 20px;
-    border-bottom: #202225 1px solid;
+.invite-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px 20px 12px 20px;
+  border-bottom: #202225 1px solid;
 }
 
-.invite-title{
-    margin: 8px 0 0 0;
-    font-size: 12px;
-    text-transform: uppercase;
-    color: #99aab5;
+.invite-title {
+  margin: 8px 0 0 0;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: #99aab5;
 }
 
 .invite-input,
-.invite-select{
-    background-color: #202225;
-    color: #dcddde;
-    border: 1px solid #2f3136;
-    border-radius: 8px;
-    padding: 8px 10px;
-    outline: none;
+.invite-select {
+  background-color: #202225;
+  color: #dcddde;
+  border: 1px solid #2f3136;
+  border-radius: 8px;
+  padding: 8px 10px;
+  outline: none;
 }
 
 .invite-input:focus,
-.invite-select:focus{
-    border-color: #5865f2;
+.invite-select:focus {
+  border-color: #5865f2;
 }
 
-.invite-button{
-    background: #5865f2;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    padding: 8px 12px;
-    font-weight: 700;
-    cursor: pointer;
+.invite-button {
+  background: #5865f2;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-weight: 700;
+  cursor: pointer;
 }
 
-.invite-button:disabled{
-    opacity: .6;
-    cursor: not-allowed;
+.invite-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
-.success-message{
-    color: #3ba55d;
-    font-size: 12px;
+.success-message {
+  color: #3ba55d;
+  font-size: 12px;
 }
 .create-channel-button {
-    width: 100%;
-    background: #5865f2; /* similar a highlight */
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    padding: 10px 12px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: background-color .2s ease, transform .08s ease;
+  width: 100%;
+  background: #5865f2;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.08s ease;
 }
 
 .create-channel-button:hover {
-    background: #4752c4;
+  background: #4752c4;
 }
 
 .create-channel-button:active {
-    transform: translateY(1px);
+  transform: translateY(1px);
 }
 
 .create-channel-button:disabled {
-    opacity: .6;
-    cursor: not-allowed;
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
-
 .loading-message {
-    font-size: 14px;
-    font-style: italic;
-    color: #99aab5;
-    display: block; 
-    padding: 5px 10px;
+  font-size: 14px;
+  font-style: italic;
+  color: #99aab5;
+  display: block;
+  padding: 5px 10px;
 }
 
 .error-message {
-    font-size: 14px;
-    color: var(--red-color);
-    display: block;
-    padding: 5px 10px;
-    font-weight: 500;
+  font-size: 14px;
+  color: var(--red-color);
+  display: block;
+  padding: 5px 10px;
+  font-weight: 500;
 }
 
 @media (min-width: 1600px) {
-    .channel-sidebar {
-        width: 280px;
-    }
+  .channel-sidebar {
+    width: 280px;
+  }
 }
 
 @media (max-width: 1024px) {
-    .channel-sidebar {
-        width: 100%;
-        height: auto;
-        display: flex;
-        flex-direction: column;
-    }
+  .channel-sidebar {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 @media (max-width: 768px) {
-    .channel-sidebar {
-        padding: 8px 0 16px;
-    }
-    .channel-actions {
-        padding: 0 16px 12px;
-    }
+  .channel-sidebar {
+    padding: 8px 0 16px;
+  }
+  .channel-actions {
+    padding: 0 16px 12px;
+  }
 }
 
 @media (max-width: 480px) {
-    .channel-sidebar {
-        box-shadow: none;
-    }
-    .channel-actions,
-    .invite-form {
-        padding-left: 12px;
-        padding-right: 12px;
-    }
-    .create-channel-button {
-        font-size: 14px;
-        padding: 8px 10px;
-    }
+  .channel-sidebar {
+    box-shadow: none;
+  }
+  .channel-actions,
+  .invite-form {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  .create-channel-button {
+    font-size: 14px;
+    padding: 8px 10px;
+  }
 }

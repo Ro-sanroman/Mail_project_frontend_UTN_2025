@@ -1,58 +1,58 @@
-.button-group{
-    display: flex;
-    flex-direction: row;
-    justify-content:center;
-    align-items: center;
-    gap: 10px;
-    margin-top: 20px
+.button-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
 }
 
-.register-button{
-    background-color: transparent;
-    border: none;
-    color: #dcddde;
-    font-size: 16px;
-    font-weight: 400;   
-    cursor: pointer;
+.register-button {
+  background-color: transparent;
+  border: none;
+  color: #dcddde;
+  font-size: 16px;
+  font-weight: 400;
+  cursor: pointer;
 }
 
-.register-button-wrapper{
-    width: 100%;
-    background-color: #5865f2; 
-    color: #dcddde;
-    border: none;
-    border-radius: 8px;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 600;
-    transition: background-color 0.15s ease;
+.register-button-wrapper {
+  width: 100%;
+  background-color: #5865f2;
+  color: #dcddde;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: background-color 0.15s ease;
 }
 
 @media (min-width: 1600px) {
-    .register-button-wrapper {
-        padding: 12px 24px;
-    }
-    .register-button {
-        font-size: 18px;
-    }
+  .register-button-wrapper {
+    padding: 12px 24px;
+  }
+  .register-button {
+    font-size: 18px;
+  }
 }
 
 @media (max-width: 768px) {
-    .button-group {
-        flex-direction: column;
-        width: 100%;
-    }
-    .register-button-wrapper {
-        width: 100%;
-    }
+  .button-group {
+    flex-direction: column;
+    width: 100%;
+  }
+  .register-button-wrapper {
+    width: 100%;
+  }
 }
 
 @media (max-width: 480px) {
-    .button-group {
-        gap: 6px;
-    }
-    .register-button {
-        font-size: 14px;
-    }
+  .button-group {
+    gap: 6px;
+  }
+  .register-button {
+    font-size: 14px;
+  }
 }

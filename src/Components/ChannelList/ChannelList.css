@@ -1,99 +1,97 @@
 .channel-list-container {
-    padding-top: 5px;
-    padding-bottom: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
-
 
 .no-channels-status-message {
-    font-size: 13px;
-    font-style: italic;
-    color: #8e9297;
-    padding: 5px 15px;
-    display: block;
+  font-size: 13px;
+  font-style: italic;
+  color: #8e9297;
+  padding: 5px 15px;
+  display: block;
 }
 
-
 .channel-item-link {
-    text-decoration: none;
-    color: #8e9297; 
-    display: flex; 
-    align-items: center;
-    padding: 6px 10px 6px 15px; 
-    margin: 0 8px; 
-    border-radius: 4px;
-    transition: background-color 0.15s ease, color 0.15s ease;
+  text-decoration: none;
+  color: #8e9297;
+  display: flex;
+  align-items: center;
+  padding: 6px 10px 6px 15px;
+  margin: 0 8px;
+  border-radius: 4px;
+  transition: background-color 0.15s ease, color 0.15s ease;
 }
 
 .channel-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 6px;
-    padding-right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  padding-right: 10px;
 }
 
 .channel-item-link:hover {
-    color: #dcddde; 
-    background-color:#4f545c; 
+  color: #dcddde;
+  background-color: #4f545c;
 }
 
 .channel-item-link.active-channel {
-    color: white; 
-    background-color: #40444b; 
-    font-weight: 500;
+  color: white;
+  background-color: #40444b;
+  font-weight: 500;
 }
 
 .channel-icon {
-    font-weight: 500;
-    margin-right: 6px;
-    font-size: 18px; 
-    line-height: 1; 
+  font-weight: 500;
+  margin-right: 6px;
+  font-size: 18px;
+  line-height: 1;
 }
 
 .channel-name {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .channel-delete-button {
-    background: transparent;
-    border: 1px solid rgba(255,255,255,0.2);
-    color: #ff6b6b;
-    border-radius: 6px;
-    padding: 4px 8px;
-    cursor: pointer;
-    font-size: 12px;
-    transition: background 0.2s ease, border-color 0.2s ease;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ff6b6b;
+  border-radius: 6px;
+  padding: 4px 8px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: background 0.2s ease, border-color 0.2s ease;
 }
 
 .channel-delete-button:hover:not(:disabled) {
-    background: rgba(255, 107, 107, 0.1);
-    border-color: #ff6b6b;
+  background: rgba(255, 107, 107, 0.1);
+  border-color: #ff6b6b;
 }
 
 .channel-delete-button:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 @media (max-width: 768px) {
-    .channel-item-link {
-        margin: 0 6px;
-    }
-    .channel-item {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 4px;
-    }
+  .channel-item-link {
+    margin: 0 6px;
+  }
+  .channel-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
 }
 
 @media (max-width: 480px) {
-    .channel-item-link {
-        padding: 6px 10px;
-        font-size: 14px;
-    }
-    .channel-icon {
-        font-size: 16px;
-    }
+  .channel-item-link {
+    padding: 6px 10px;
+    font-size: 14px;
+  }
+  .channel-icon {
+    font-size: 16px;
+  }
 }

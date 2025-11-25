@@ -11,7 +11,6 @@ import { Link } from "react-router";
 import "./HomeScreen.css";
 
 const HomeScreen = () => {
-
   const { sendRequest, response, loading, error } = useFetch();
   const {
     sendRequest: sendCreate,
@@ -36,23 +35,16 @@ const HomeScreen = () => {
   const [inviteRole, setInviteRole] = useState("member");
   const [workspaces, setWorkspaces] = useState([]);
   const [selectedWorkspaceId, setSelectedWorkspaceId] = useState(
-  localStorage.getItem("workspace_id") || ""
-);
-const [workspacePendingDelete, setWorkspacePendingDelete] = useState(null);
+    localStorage.getItem("workspace_id") || ""
+  );
+  const [workspacePendingDelete, setWorkspacePendingDelete] = useState(null);
 
-useEffect(
-    ()=> {
-      sendRequest(
-        () => getWorkspaces()
-      )
-    },
-    []
-  )
-  // Sincronizar estado local cuando llega la respuesta del fetch
+  useEffect(() => {
+    sendRequest(() => getWorkspaces());
+  }, []);
   useEffect(() => {
     if (response && Array.isArray(response?.data?.workspaces)) {
       setWorkspaces(response.data.workspaces);
-      // Si no hay selección, elegir el primero disponible
       if (!selectedWorkspaceId && response.data.workspaces.length > 0) {
         setSelectedWorkspaceId(response.data.workspaces[0].workspace_id);
       }
@@ -62,23 +54,31 @@ useEffect(
   useEffect(() => {
     if (createResponse) {
       setWorkspaceName("");
-      // Intento de actualización optimista si la API devuelve el workspace creado
-      const ws = createResponse?.data?.workspace || createResponse?.workspace || createResponse?.body?.workspace;
+      const ws =
+        createResponse?.data?.workspace ||
+        createResponse?.workspace ||
+        createResponse?.body?.workspace;
       if (ws && ws.workspace_id) {
         setWorkspaces((prev) => {
           const exists = prev.some((w) => w.workspace_id === ws.workspace_id);
           if (exists) return prev;
-          return [{ workspace_id: ws.workspace_id, workspace_name: ws.workspace_name || workspaceName }, ...prev];
+          return [
+            {
+              workspace_id: ws.workspace_id,
+              workspace_name: ws.workspace_name || workspaceName,
+            },
+            ...prev,
+          ];
         });
-        // Seleccionar automáticamente el recién creado
         setSelectedWorkspaceId(ws.workspace_id);
       } else {
-        // Si la API no devuelve el workspace, agregamos un placeholder optimista
         const tempId = `temp_${Date.now()}`;
-        setWorkspaces((prev) => [{ workspace_id: tempId, workspace_name: workspaceName }, ...prev]);
+        setWorkspaces((prev) => [
+          { workspace_id: tempId, workspace_name: workspaceName },
+          ...prev,
+        ]);
         setSelectedWorkspaceId(tempId);
       }
-      // Re-fetch para asegurar consistencia
       sendRequest(() => getWorkspaces());
     }
   }, [createResponse]);
@@ -109,7 +109,9 @@ useEffect(
   console.log(response, loading, error);
   function handleDeleteWorkspace(workspace_id) {
     if (!workspace_id) return;
-    const confirmed = window.confirm("¿Seguro que deseas eliminar este workspace?");
+    const confirmed = window.confirm(
+      "¿Seguro que deseas eliminar este workspace?"
+    );
     if (!confirmed) return;
     setWorkspacePendingDelete(workspace_id);
     sendDelete(() => deleteWorkspaceService(workspace_id));
@@ -151,7 +153,11 @@ useEffect(
             e.preventDefault();
             if (!inviteEmail.trim() || inviting || !selectedWorkspaceId) return;
             sendInvite(() =>
-              inviteToWorkspace(selectedWorkspaceId, inviteEmail.trim(), inviteRole)
+              inviteToWorkspace(
+                selectedWorkspaceId,
+                inviteEmail.trim(),
+                inviteRole
+              )
             );
           }}
         >
@@ -200,54 +206,54 @@ useEffect(
         <h1 className="header-title">Espacios de trabajo</h1>
         {loading ? (
           <span className="loading-message">Cargando...</span>
+        ) : Array.isArray(workspaces) && workspaces.length === 0 ? (
+          <div className="empty-workspaces">
+            <div className="empty-icon">🗂️</div>
+            <h3 className="empty-title">No hay workspaces aún</h3>
+            <p className="empty-subtitle">
+              Creá tu primer workspace desde la barra lateral
+            </p>
+          </div>
         ) : (
-          Array.isArray(workspaces) && workspaces.length === 0 ? (
-            <div className="empty-workspaces">
-              <div className="empty-icon">🗂️</div>
-              <h3 className="empty-title">No hay workspaces aún</h3>
-              <p className="empty-subtitle">Creá tu primer workspace desde la barra lateral</p>
-            </div>
-          ) : (
-            <div className="workspace-list">
-              {workspaces.map((workspace) => {
-                  return (
-                    <div key={workspace.workspace_id} className="workspace-card">
-                      <h2 className="workspace-name">
-                        {workspace.workspace_name}
-                      </h2>
-                      <div className="workspace-actions">
-                        <Link
-                          to={"/workspace/" + workspace.workspace_id}
-                          className="workspace-button"
-                        >
-                          Abrir workspace
-                        </Link>
-                        <button
-                          className="workspace-delete-button"
-                          type="button"
-                          onClick={() => handleDeleteWorkspace(workspace.workspace_id)}
-                          disabled={
-                            deletingWorkspace &&
-                            workspacePendingDelete === workspace.workspace_id
-                          }
-                        >
-                          {deletingWorkspace &&
-                          workspacePendingDelete === workspace.workspace_id
-                            ? "Eliminando..."
-                            : "Eliminar"}
-                        </button>
+          <div className="workspace-list">
+            {workspaces.map((workspace) => {
+              return (
+                <div key={workspace.workspace_id} className="workspace-card">
+                  <h2 className="workspace-name">{workspace.workspace_name}</h2>
+                  <div className="workspace-actions">
+                    <Link
+                      to={"/workspace/" + workspace.workspace_id}
+                      className="workspace-button"
+                    >
+                      Abrir workspace
+                    </Link>
+                    <button
+                      className="workspace-delete-button"
+                      type="button"
+                      onClick={() =>
+                        handleDeleteWorkspace(workspace.workspace_id)
+                      }
+                      disabled={
+                        deletingWorkspace &&
+                        workspacePendingDelete === workspace.workspace_id
+                      }
+                    >
+                      {deletingWorkspace &&
+                      workspacePendingDelete === workspace.workspace_id
+                        ? "Eliminando..."
+                        : "Eliminar"}
+                    </button>
+                  </div>
+                  {deleteWorkspaceError &&
+                    workspacePendingDelete === workspace.workspace_id && (
+                      <div className="workspace-error">
+                        {deleteWorkspaceError}
                       </div>
-                      {deleteWorkspaceError &&
-                        workspacePendingDelete === workspace.workspace_id && (
-                          <div className="workspace-error">
-                            {deleteWorkspaceError}
-                          </div>
-                        )}
-                    </div>
-                  );
-                })}
-            </div>
-          )
+                    )}
+                </div>
+              );
+            })}
+          </div>
         )}
       </main>
     </div>

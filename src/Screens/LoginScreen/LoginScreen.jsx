@@ -10,16 +10,13 @@ const LoginScreen = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { onLogin } = useContext(AuthContext);
-  useEffect(
-    () => {
-      const query = new URLSearchParams(location.search);
-      const from = query.get("from");
-      if (from === "verified_email") {
-        alert("Has validado tu mail exitosamente");
-      }
-    },
-    [] //Solo queremos que se ejecute cuando se monte el componente
-  );
+  useEffect(() => {
+    const query = new URLSearchParams(location.search);
+    const from = query.get("from");
+    if (from === "verified_email") {
+      alert("Has validado tu mail exitosamente");
+    }
+  }, []);
 
   const LOGIN_FORM_FIELDS = {
     EMAIL: "email",
@@ -49,13 +46,11 @@ const LoginScreen = () => {
 
   useEffect(() => {
     if (response && response.ok) {
-      //Queremos que persista en memoria el auth token
-      //Dejamos que el context se encargue de que sucedera
       onLogin(response.body.auth_token);
     }
   }, [response]);
   return (
-     <div className="screen">
+    <div className="screen">
       <div className="login-screen">
         <div className="form-container">
           <h2 className="title">Bienvenido!</h2>

@@ -54,7 +54,9 @@ const ChannelDetail = () => {
           <div className="no-channel-box">
             <div className="no-channel-icon">#</div>
             <h2 className="no-channel-title">Canal no seleccionado</h2>
-            <p className="no-channel-subtitle">Elegí un canal en la barra lateral para ver los mensajes</p>
+            <p className="no-channel-subtitle">
+              Elegí un canal en la barra lateral para ver los mensajes
+            </p>
           </div>
         </div>
       )}
@@ -63,82 +65,92 @@ const ChannelDetail = () => {
         <>
           {loading && (
             <div className="loading-indicator fancy">
-              <div className="spinner"/>
+              <div className="spinner" />
               <span>Cargando mensajes...</span>
             </div>
           )}
-          {error && <span className="error-message">Error al cargar mensajes</span>}
+          {error && (
+            <span className="error-message">Error al cargar mensajes</span>
+          )}
 
-          {!loading && !error && (
-            messages.length === 0 ? (
+          {!loading &&
+            !error &&
+            (messages.length === 0 ? (
               <div className="empty-messages">
                 <div className="empty-icon">💬</div>
                 <h3 className="empty-title">No hay mensajes aún</h3>
                 <p className="empty-subtitle">¡Sé el primero en escribir!</p>
               </div>
             ) : (
-            <ul className="message-list ">
-  {messages.map((m) => {
-    const author =
-      m.user_name
-      || m.author?.name
-      || m.author?.username
-      || m.author?.email
-      || m.user?.name
-      || m.user?.username
-      || m.user?.email
-      || m.member?.user?.name
-      || m.member?.user?.username
-      || m.member?.user?.email
-      || m.member?.name
-      || m.member?.username
-      || m.member?.email
-      || m.createdBy?.name
-      || m.created_by?.name
-      || m.sender?.name
-      || m.sender?.username
-      || m.sender
-      || "Usuario";
+              <ul className="message-list ">
+                {messages.map((m) => {
+                  const author =
+                    m.user_name ||
+                    m.author?.name ||
+                    m.author?.username ||
+                    m.author?.email ||
+                    m.user?.name ||
+                    m.user?.username ||
+                    m.user?.email ||
+                    m.member?.user?.name ||
+                    m.member?.user?.username ||
+                    m.member?.user?.email ||
+                    m.member?.name ||
+                    m.member?.username ||
+                    m.member?.email ||
+                    m.createdBy?.name ||
+                    m.created_by?.name ||
+                    m.sender?.name ||
+                    m.sender?.username ||
+                    m.sender ||
+                    "Usuario";
 
-    const content =
-      m.message_content
-      || m.content
-      || m.message
-      || m.msg
-      || m.body
-      || m.text
-      || m.description
-      || m.mensaje
-      || m.contenido
-      || m?.data?.content
-      || m?.data?.message
-      || m?.attributes?.content
-      || m?.attributes?.message
-      || (typeof m === "string" ? m : "");
+                  const content =
+                    m.message_content ||
+                    m.content ||
+                    m.message ||
+                    m.msg ||
+                    m.body ||
+                    m.text ||
+                    m.description ||
+                    m.mensaje ||
+                    m.contenido ||
+                    m?.data?.content ||
+                    m?.data?.message ||
+                    m?.attributes?.content ||
+                    m?.attributes?.message ||
+                    (typeof m === "string" ? m : "");
 
-    return (
-    <div className="message-wrap">
-      <div
-        className={`message-author-row ${
-          author === "Yo" || author === "Me" || author === "usuario" ? "me" : "other"
-        }`}
-      >
-        <span className="message-author">{author}</span>
-      </div>
-      <li
-        key={m._id || m.id}
-        className={`message-item bubble ${
-          author === "Yo" || author === "Me" || author === "usuario" ? "me" : "other"
-        }`}
-      >
-        <span className="message-content">{content}</span>
-      </li>
-    </div>
-    );
-  })}
-</ul>
-            )
-          )}
+                  return (
+                    <div className="message-wrap">
+                      <div
+                        className={`message-author-row ${
+                          author === "Yo" ||
+                          author === "Me" ||
+                          author === "usuario"
+                            ? "me"
+                            : "other"
+                        }`}
+                      >
+                        <span className="message-author">{author}</span>
+                      </div>
+                      <li
+                        key={m._id || m.id}
+                        className={`message-item bubble ${
+                          author === "Yo" ||
+                          author === "Me" ||
+                          author === "usuario"
+                            ? "me"
+                            : "other"
+                        }`}
+                      >
+                        <span className="message-content">{content}</span>
+                      </li>
+                    </div>
+                  );
+                })}
+              </ul>
+            ))}
 
           <form
             className="message-form"

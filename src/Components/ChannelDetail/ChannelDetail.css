@@ -1,52 +1,49 @@
-/* Variables para facilitar el cambio de tema */
 :root {
-    --dark-fond: #36393f; 
-    --darker-fond: #2f3136; 
-    --deep-darker-fond: #202225; 
-    --text-primary: #dcddde; 
-    --text-secondary: #72767d; 
-    --accent-blue: #5865f2; 
-    --online-green: #3ba55d;
+  --dark-fond: #36393f;
+  --darker-fond: #2f3136;
+  --deep-darker-fond: #202225;
+  --text-primary: #dcddde;
+  --text-secondary: #72767d;
+  --accent-blue: #5865f2;
+  --online-green: #3ba55d;
 }
 
-/* Evitar scrolls globales */
-html, body {
+html,
+body {
   height: 100%;
   margin: 0;
-  overflow: hidden; /* sin scroll barra general */
+  overflow: hidden;
 }
 
 .channel-detail {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    justify-content: space-between;
-    height: 100vh; /* ocupar alto de la ventana */
-    overflow: hidden; /* no scroll externo */
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: space-between;
+  height: 100vh;
+  overflow: hidden;
 }
 
-/* Lista de mensajes sin bullets ni sangría */
 .message-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-/* La lista estilo whatsapp ocupa el espacio y scrollea verticalmente */
 .message-list {
   flex: 1 1 auto;
   overflow-y: auto;
-  overflow-x: hidden; /* sin scroll horizontal */
+  overflow-x: hidden;
 }
 
 .loading-indicator,
 .error-message {
-    padding: 20px;
-    text-align: center;
-    color: var(--text-secondary);
+  padding: 20px;
+  text-align: center;
+  color: var(--text-secondary);
 }
 
-.message-form{
+.message-form {
   display: flex;
   flex-direction: row;
   justify-content: baseline;
@@ -58,43 +55,43 @@ html, body {
 }
 
 .message-form.input-container {
-    padding: 20px;
-    padding-top: 5px; 
-    background-color: var(--dark-fond);
-    display: flex;
-    gap: 10px;
+  padding: 20px;
+  padding-top: 5px;
+  background-color: var(--dark-fond);
+  display: flex;
+  gap: 10px;
 }
 
 .message-input {
-    flex-grow: 1;
-    padding: 12px 15px;
-    border: none;
-    border-radius: 8px;
-    background-color: var(---deep-darker-fond);
-    color: var(--text-primary);
-    font-size: 16px;
-    box-sizing: border-box;
-    transition: background-color 0.15s ease;
+  flex-grow: 1;
+  padding: 12px 15px;
+  border: none;
+  border-radius: 8px;
+  background-color: var(---deep-darker-fond);
+  color: var(--text-primary);
+  font-size: 16px;
+  box-sizing: border-box;
+  transition: background-color 0.15s ease;
 }
 
 .send-button {
-    background-color: var(--accent-blue);
-    color: #dcddde;
-    border: none;
-    border-radius: 8px;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.2s;
+  background-color: var(--accent-blue);
+  color: #dcddde;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s;
 }
 
 .send-button:hover:not(:disabled) {
-    background-color: #4752c4; 
+  background-color: #4752c4;
 }
 
 .send-button:disabled {
-    background-color: #4f545c;
-    cursor: not-allowed;
+  background-color: #4f545c;
+  cursor: not-allowed;
 }
 
 .message-list {
@@ -110,7 +107,6 @@ html, body {
   align-self: flex-end;
 }
 
-/* Contenedor base */
 .message-item.bubble {
   max-width: 75%;
   padding: 10px 14px;
@@ -121,14 +117,12 @@ html, body {
   justify-content: center;
 }
 
-/* Mensajes que mando YO */
 .message-item.me {
   align-self: flex-end;
-  background-color: var(--text-primary); /* verde claro tipo WhatsApp */
+  background-color: var(--text-primary);
   border-top-right-radius: 0;
 }
 
-/* Mensajes de OTROS */
 .message-item.other {
   align-self: flex-start;
   background-color: #4752c4;
@@ -136,7 +130,6 @@ html, body {
   border: 1px solid #4752c4;
 }
 
-/* Autor */
 .message-author {
   font-size: 12px;
   font-weight: bold;
@@ -145,13 +138,11 @@ html, body {
   color: #ffffff;
 }
 
-/* Contenido */
 .message-content {
   white-space: pre-wrap;
   color: var(--text-primary);
 }
 
-/* Placeholder: Canal no seleccionado */
 .no-channel-selected {
   flex: 1 1 auto;
   display: flex;
@@ -163,13 +154,13 @@ html, body {
 
 .no-channel-box {
   background: var(--darker-fond);
-  border: 1px solid rgba(255,255,255,0.06);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 12px;
   padding: 28px 32px;
   max-width: 520px;
   width: 100%;
   text-align: center;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
 }
 
 .no-channel-icon {
@@ -187,11 +178,11 @@ html, body {
 }
 
 .no-channel-title {
- font-size: 13px;
-    font-style: italic;
-    color: #8e9297;
-    padding: 5px 15px;
-    display: block;
+  font-size: 13px;
+  font-style: italic;
+  color: #8e9297;
+  padding: 5px 15px;
+  display: block;
 }
 
 .no-channel-subtitle {
@@ -200,7 +191,6 @@ html, body {
   color: var(--text-secondary);
 }
 
-/* Estado vacío: No hay mensajes aún */
 .empty-messages {
   flex: 1 1 auto;
   min-height: 220px;
@@ -224,7 +214,7 @@ html, body {
   background: rgba(88, 101, 242, 0.18);
   color: var(--text-primary);
   font-size: 28px;
-  box-shadow: inset 0 0 0 1px rgba(88,101,242,0.28);
+  box-shadow: inset 0 0 0 1px rgba(88, 101, 242, 0.28);
   animation: pop-in 280ms ease-out;
 }
 
@@ -242,8 +232,14 @@ html, body {
 }
 
 @keyframes pop-in {
-  0% { transform: scale(0.9); opacity: 0; }
-  100% { transform: scale(1); opacity: 1; }
+  0% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 @media (min-width: 1600px) {
@@ -257,7 +253,8 @@ html, body {
 }
 
 @media (max-width: 1200px) {
-  html, body {
+  html,
+  body {
     overflow: auto;
   }
   .channel-detail {
