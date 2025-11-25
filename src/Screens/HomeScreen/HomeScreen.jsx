@@ -3,6 +3,7 @@ import useFetch from "../../hook/useFetch.jsx";
 import {
   getWorkspaces,
   createWorkspace,
+  deleteWorkspace as deleteWorkspaceService,
 } from "../../services/workspaceService.js";
 import { inviteToWorkspace } from "../../services/channelService.js";
 import { createChannel } from "../../services/channelService.js";
@@ -19,6 +20,12 @@ const HomeScreen = () => {
     response: createResponse,
   } = useFetch();
   const {
+    sendRequest: sendDelete,
+    loading: deletingWorkspace,
+    error: deleteWorkspaceError,
+    response: deleteWorkspaceResponse,
+  } = useFetch();
+  const {
     sendRequest: sendInvite,
     loading: inviting,
     error: inviteError,
@@ -31,6 +38,7 @@ const HomeScreen = () => {
   const [selectedWorkspaceId, setSelectedWorkspaceId] = useState(
   localStorage.getItem("workspace_id") || ""
 );
+const [workspacePendingDelete, setWorkspacePendingDelete] = useState(null);
 
 useEffect(
     ()=> {
@@ -76,6 +84,22 @@ useEffect(
   }, [createResponse]);
 
   useEffect(() => {
+    if (deleteWorkspaceResponse?.ok && workspacePendingDelete) {
+      setWorkspaces((prev) => {
+        const updated = prev.filter(
+          (ws) => ws.workspace_id !== workspacePendingDelete
+        );
+        if (selectedWorkspaceId === workspacePendingDelete) {
+          setSelectedWorkspaceId(updated[0]?.workspace_id || "");
+        }
+        return updated;
+      });
+      setWorkspacePendingDelete(null);
+      sendRequest(() => getWorkspaces());
+    }
+  }, [deleteWorkspaceResponse, workspacePendingDelete, selectedWorkspaceId]);
+
+  useEffect(() => {
     if (inviteResponse) {
       setInviteEmail("");
       setInviteRole("member");
@@ -83,6 +107,14 @@ useEffect(
   }, [inviteResponse]);
 
   console.log(response, loading, error);
+  function handleDeleteWorkspace(workspace_id) {
+    if (!workspace_id) return;
+    const confirmed = window.confirm("¿Seguro que deseas eliminar este workspace?");
+    if (!confirmed) return;
+    setWorkspacePendingDelete(workspace_id);
+    sendDelete(() => deleteWorkspaceService(workspace_id));
+  }
+
   return (
     <div className="screen-container home-layout">
       <aside className="home-sidebar">
@@ -190,7 +222,27 @@ useEffect(
                         >
                           Abrir workspace
                         </Link>
+                        <button
+                          className="workspace-delete-button"
+                          type="button"
+                          onClick={() => handleDeleteWorkspace(workspace.workspace_id)}
+                          disabled={
+                            deletingWorkspace &&
+                            workspacePendingDelete === workspace.workspace_id
+                          }
+                        >
+                          {deletingWorkspace &&
+                          workspacePendingDelete === workspace.workspace_id
+                            ? "Eliminando..."
+                            : "Eliminar"}
+                        </button>
                       </div>
+                      {deleteWorkspaceError &&
+                        workspacePendingDelete === workspace.workspace_id && (
+                          <div className="workspace-error">
+                            {deleteWorkspaceError}
+                          </div>
+                        )}
                     </div>
                   );
                 })}

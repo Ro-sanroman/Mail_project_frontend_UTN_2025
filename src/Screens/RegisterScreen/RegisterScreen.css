@@ -28,3 +28,31 @@
     font-weight: 600;
     transition: background-color 0.15s ease;
 }
+
+@media (min-width: 1600px) {
+    .register-button-wrapper {
+        padding: 12px 24px;
+    }
+    .register-button {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 768px) {
+    .button-group {
+        flex-direction: column;
+        width: 100%;
+    }
+    .register-button-wrapper {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .button-group {
+        gap: 6px;
+    }
+    .register-button {
+        font-size: 14px;
+    }
+}

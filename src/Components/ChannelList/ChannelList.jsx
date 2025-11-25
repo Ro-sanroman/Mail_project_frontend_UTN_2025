@@ -2,7 +2,7 @@ import React from 'react'
 import { Link, useParams } from 'react-router'
 import "./ChannelList.css"
 
-const ChannelList = ({channel_list}) => {
+const ChannelList = ({channel_list = [], onDeleteChannel, deletingChannelId}) => {
     const {workspace_id} = useParams()
   return ( 
     <div className="channel-list-container">
@@ -13,14 +13,29 @@ const ChannelList = ({channel_list}) => {
             (channel) => {
                 const chanId = channel._id || channel.id;
                 return (
-                    <Link 
-                        key={chanId} 
-                        to={`/workspace/${workspace_id}/${chanId}`}
-                        className="channel-item-link"
-                    >
-                        <span className="channel-icon">#</span> 
-                        <span className="channel-name">{channel.name}</span>
-                    </Link>
+                    <div key={chanId} className="channel-item">
+                        <Link 
+                            to={`/workspace/${workspace_id}/${chanId}`}
+                            className="channel-item-link"
+                        >
+                            <span className="channel-icon">#</span> 
+                            <span className="channel-name">{channel.name}</span>
+                        </Link>
+                        {onDeleteChannel && (
+                            <button
+                                type="button"
+                                className="channel-delete-button"
+                                onClick={(event) => {
+                                    event.preventDefault()
+                                    event.stopPropagation()
+                                    onDeleteChannel(chanId)
+                                }}
+                                disabled={deletingChannelId === chanId}
+                            >
+                                {deletingChannelId === chanId ? '...' : 'Eliminar'}
+                            </button>
+                        )}
+                    </div>
                 )
             }
         )

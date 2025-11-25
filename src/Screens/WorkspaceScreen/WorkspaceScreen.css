@@ -8,3 +8,24 @@
     background-color: #36393f;
     font-family: 'Whitney', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
+
+@media (min-width: 1600px) {
+    .workspace-screen {
+        max-width: 1600px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 1200px) {
+    .workspace-screen {
+        height: auto;
+        min-height: 100vh;
+    }
+}
+
+@media (max-width: 1024px) {
+    .workspace-screen {
+        flex-direction: column;
+        overflow: visible;
+    }
+}

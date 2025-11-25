@@ -245,3 +245,60 @@ html, body {
   0% { transform: scale(0.9); opacity: 0; }
   100% { transform: scale(1); opacity: 1; }
 }
+
+@media (min-width: 1600px) {
+  .channel-detail {
+    padding-right: 24px;
+  }
+  .message-list {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 1200px) {
+  html, body {
+    overflow: auto;
+  }
+  .channel-detail {
+    height: auto;
+    min-height: 70vh;
+  }
+  .message-list {
+    max-height: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .message-form {
+    flex-direction: column;
+    width: 100%;
+    padding: 16px;
+  }
+  .message-input {
+    width: 100%;
+  }
+  .message-item.bubble {
+    max-width: 85%;
+  }
+}
+
+@media (max-width: 480px) {
+  .channel-detail {
+    padding-bottom: 60px;
+  }
+  .message-list {
+    padding: 10px;
+  }
+  .message-item.bubble {
+    max-width: 100%;
+    font-size: 14px;
+  }
+  .message-form {
+    padding: 12px;
+    gap: 8px;
+  }
+  .send-button {
+    width: 100%;
+  }
+}

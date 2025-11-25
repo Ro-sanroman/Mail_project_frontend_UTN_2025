@@ -211,6 +211,11 @@
     justify-content: center;
 }
 
+.workspace-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
 
 .workspace-button {
     display: inline-block;
@@ -226,4 +231,94 @@
 
 .workspace-link:hover {
     background-color: #677bc4;
+}
+
+.workspace-delete-button {
+    background-color: transparent;
+    color: #ff6b6b;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.workspace-delete-button:hover:not(:disabled) {
+    background-color: rgba(255,107,107,0.08);
+    border-color: #ff6b6b;
+}
+
+.workspace-delete-button:disabled {
+    opacity: .6;
+    cursor: not-allowed;
+}
+
+@media (min-width: 1600px) {
+    .screen-container {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+    .home-sidebar {
+        width: 320px;
+    }
+    .workspace-list {
+        max-width: 800px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .home-layout {
+        flex-direction: column;
+    }
+    .home-sidebar {
+        width: 100%;
+        position: static;
+        height: auto;
+    }
+    .home-content {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .screen-container {
+        padding: 16px 12px;
+    }
+    .home-sidebar {
+        padding: 12px;
+    }
+    .workspace-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    .workspace-actions {
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .workspace-button {
+        width: 100%;
+        text-align: center;
+    }
+    .workspace-delete-button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .screen-container {
+        padding: 12px 8px;
+    }
+    .sidebar-title,
+    .header-title {
+        text-align: left;
+        font-size: 18px;
+    }
+    .workspace-input,
+    .workspace-select {
+        width: 100%;
+    }
 }

@@ -50,8 +50,34 @@ async function createMessage (workspace_id, channel_id, content) {
     return response;
 }
 
+async function deleteMessage(workspace_id, channel_id, message_id) {
+    const url = ENVIRONMENT.URL_API + `/api/workspace/${workspace_id}/channels/${channel_id}/messages/${message_id}`;
+    const response_http = await fetch(
+        url,
+        {
+            method: "DELETE",
+            headers: {
+                authorization: `Bearer ${localStorage.getItem(AUTH_TOKEN_KEY)}`,
+            }
+        }
+    );
+
+    let response;
+    try{
+        response = await response_http.json();
+    } catch (e) {
+        response = { ok: response_http.ok, status: response_http.status };
+    }
+
+    if (!response_http.ok || response?.ok === false) {
+        throw new Error(response?.message || "Error al eliminar mensaje");
+    }
+    return response;
+}
+
 
 export {
     getMessagesByChannelId,
-    createMessage
+    createMessage,
+    deleteMessage
 }

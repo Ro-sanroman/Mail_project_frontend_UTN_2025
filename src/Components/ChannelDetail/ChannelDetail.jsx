@@ -4,6 +4,7 @@ import useFetch from "../../hook/useFetch.jsx";
 import {
   getMessagesByChannelId,
   createMessage,
+  deleteMessage,
 } from "../../services/messagesService.js";
 import "./ChannelDetail.css";
 

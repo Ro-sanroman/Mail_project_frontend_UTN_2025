@@ -49,6 +49,26 @@ async function createChannel (workspace_id, channel_name){
     return response;
 }
 
+async function deleteChannel(workspace_id, channel_id){
+    const url = ENVIRONMENT.URL_API + `/api/workspace/${workspace_id}/channels/${channel_id}`;
+    const response_http = await fetch(url, {
+        method: "DELETE",
+        headers: {
+            authorization: `Bearer ${localStorage.getItem(AUTH_TOKEN_KEY)}`,
+        }
+    });
+    let response;
+    try {
+        response = await response_http.json();
+    } catch (e) {
+        response = { ok: response_http.ok, status: response_http.status };
+    }
+    if (!response_http.ok || response?.ok === false) {
+        throw new Error(response?.message || "Error al eliminar canal");
+    }
+    return response;
+}
+
 //Invitar usuario a un canal
 async function inviteToChannel (workspace_id, channel_id, email, role){
     const url = ENVIRONMENT.URL_API + `/api/workspace/${workspace_id}/channels/${channel_id}/members/invite`;
@@ -99,4 +119,4 @@ async function inviteToWorkspace (workspace_id, email, role){
     return response;
 }
 
-export { getChannelList, createChannel, inviteToChannel, inviteToWorkspace }
+export { getChannelList, createChannel, deleteChannel, inviteToChannel, inviteToWorkspace }
