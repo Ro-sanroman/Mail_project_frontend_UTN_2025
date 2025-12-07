@@ -5,6 +5,7 @@ import useForm from "../../hook/useForm.jsx";
 import useFetch from "../../hook/useFetch.jsx";
 import { AuthContext } from "../../context/authContext.jsx";
 import "./LoginScreen.css";
+import { Link } from "react-router";
 
 const LoginScreen = () => {
   const navigate = useNavigate();
@@ -102,9 +103,7 @@ const LoginScreen = () => {
               </div>
               <div className="button-register-wrapper">
                 <button className="register-button">
-                  <a href="https://mail-project-frontend-utn-2025.vercel.app/register">
-                    Regístrate
-                  </a>
+                  <Link to="/register">Regístrate</Link>
                 </button>
               </div>
             </div>

@@ -43,10 +43,14 @@ const HomeScreen = () => {
     sendRequest(() => getWorkspaces());
   }, []);
   useEffect(() => {
-    if (response && Array.isArray(response?.data?.workspaces)) {
-      setWorkspaces(response.data.workspaces);
-      if (!selectedWorkspaceId && response.data.workspaces.length > 0) {
-        setSelectedWorkspaceId(response.data.workspaces[0].workspace_id);
+    console.log('[HomeScreen] useEffect response:', response);
+    console.log('[HomeScreen] es array?', Array.isArray(response));
+    console.log('[HomeScreen] tipo:', typeof response);
+    if (response && Array.isArray(response)) {
+      console.log('[HomeScreen] Actualizando workspaces:', response);
+      setWorkspaces(response);
+      if (!selectedWorkspaceId && response.length > 0) {
+        setSelectedWorkspaceId(response[0].workspace_id);
       }
     }
   }, [response]);
@@ -54,30 +58,9 @@ const HomeScreen = () => {
   useEffect(() => {
     if (createResponse) {
       setWorkspaceName("");
-      const ws =
-        createResponse?.data?.workspace ||
-        createResponse?.workspace ||
-        createResponse?.body?.workspace;
-      if (ws && ws.workspace_id) {
-        setWorkspaces((prev) => {
-          const exists = prev.some((w) => w.workspace_id === ws.workspace_id);
-          if (exists) return prev;
-          return [
-            {
-              workspace_id: ws.workspace_id,
-              workspace_name: ws.workspace_name || workspaceName,
-            },
-            ...prev,
-          ];
-        });
-        setSelectedWorkspaceId(ws.workspace_id);
-      } else {
-        const tempId = `temp_${Date.now()}`;
-        setWorkspaces((prev) => [
-          { workspace_id: tempId, workspace_name: workspaceName },
-          ...prev,
-        ]);
-        setSelectedWorkspaceId(tempId);
+      const newWorkspace = createResponse?.data?.workspace;
+      if (newWorkspace && newWorkspace.workspace_id) {
+        setSelectedWorkspaceId(newWorkspace.workspace_id);
       }
       sendRequest(() => getWorkspaces());
     }
@@ -107,6 +90,9 @@ const HomeScreen = () => {
   }, [inviteResponse]);
 
   console.log(response, loading, error);
+
+
+
   function handleDeleteWorkspace(workspace_id) {
     if (!workspace_id) return;
     const confirmed = window.confirm(

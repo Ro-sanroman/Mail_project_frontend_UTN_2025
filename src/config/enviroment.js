@@ -13,7 +13,7 @@ if (VITE_URL && typeof VITE_URL === "string" && VITE_URL.trim()) {
     "mail-project"
   );
 } else {
-  API_URL = "http://localhost:8080";
+  API_URL = "mail-project-utn-2025.vercel.app";
 }
 
 if (import.meta.env.DEV) {
