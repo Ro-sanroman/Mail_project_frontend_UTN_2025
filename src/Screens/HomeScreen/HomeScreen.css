@@ -305,6 +305,65 @@
   }
 }
 
+@media (max-width: 500px) {
+  .screen-container {
+    padding: 10px 6px;
+  }
+  .home-layout {
+    gap: 12px;
+  }
+  .home-sidebar {
+    padding: 12px 10px;
+    border-radius: 8px;
+  }
+  .sidebar-title {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+  .header-title {
+    font-size: 20px;
+    padding-bottom: 8px;
+  }
+  .workspace-input,
+  .workspace-select {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 15px;
+  }
+  .workspace-create-button {
+    width: 100%;
+    padding: 10px 14px;
+    font-size: 15px;
+  }
+  .workspace-card {
+    padding: 12px;
+  }
+  .workspace-name {
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+  .workspace-button,
+  .workspace-delete-button {
+    padding: 10px 14px;
+    font-size: 14px;
+  }
+  .empty-workspaces {
+    min-height: 200px;
+    padding: 20px 12px;
+  }
+  .empty-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 22px;
+  }
+  .empty-title {
+    font-size: 18px;
+  }
+  .empty-subtitle {
+    font-size: 13px;
+  }
+}
+
 @media (max-width: 480px) {
   .screen-container {
     padding: 12px 8px;

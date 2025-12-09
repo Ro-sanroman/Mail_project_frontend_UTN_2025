@@ -145,6 +145,42 @@
   }
 }
 
+@media (max-width: 500px) {
+  .channel-sidebar {
+    width: 100%;
+    box-shadow: none;
+    padding: 8px 0;
+  }
+  .sidebar-title {
+    font-size: 14px;
+    padding: 0 12px 8px;
+  }
+  .channel-actions,
+  .invite-form {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  .invite-title {
+    font-size: 11px;
+  }
+  .invite-input,
+  .invite-select {
+    padding: 10px;
+    font-size: 14px;
+  }
+  .invite-button,
+  .create-channel-button {
+    font-size: 14px;
+    padding: 10px;
+  }
+  .success-message,
+  .error-message,
+  .loading-message {
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+}
+
 @media (max-width: 480px) {
   .channel-sidebar {
     box-shadow: none;

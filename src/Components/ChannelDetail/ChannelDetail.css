@@ -280,6 +280,65 @@ body {
   }
 }
 
+@media (max-width: 500px) {
+  .channel-detail {
+    padding-bottom: 0;
+  }
+  .message-list {
+    padding: 8px;
+    gap: 8px;
+  }
+  .message-item.bubble {
+    max-width: 90%;
+    font-size: 14px;
+    padding: 10px 12px;
+  }
+  .message-author {
+    font-size: 11px;
+  }
+  .message-form {
+    padding: 10px;
+    gap: 8px;
+    width: 100%;
+  }
+  .message-input {
+    padding: 12px;
+    font-size: 15px;
+  }
+  .send-button {
+    width: 100%;
+    padding: 12px;
+    font-size: 15px;
+  }
+  .no-channel-box {
+    padding: 20px 16px;
+    max-width: 100%;
+  }
+  .no-channel-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 24px;
+  }
+  .no-channel-title {
+    font-size: 12px;
+  }
+  .empty-messages {
+    min-height: 180px;
+    padding: 16px;
+  }
+  .empty-icon {
+    width: 56px;
+    height: 56px;
+    font-size: 24px;
+  }
+  .empty-title {
+    font-size: 16px;
+  }
+  .empty-subtitle {
+    font-size: 13px;
+  }
+}
+
 @media (max-width: 480px) {
   .channel-detail {
     padding-bottom: 60px;

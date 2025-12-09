@@ -86,6 +86,32 @@
   }
 }
 
+@media (max-width: 500px) {
+  .channel-list-container {
+    padding: 4px 0;
+  }
+  .channel-item-link {
+    padding: 8px 10px;
+    margin: 0 4px;
+    font-size: 14px;
+  }
+  .channel-icon {
+    font-size: 16px;
+    margin-right: 4px;
+  }
+  .channel-name {
+    font-size: 14px;
+  }
+  .channel-delete-button {
+    padding: 4px 6px;
+    font-size: 11px;
+  }
+  .no-channels-status-message {
+    font-size: 12px;
+    padding: 4px 12px;
+  }
+}
+
 @media (max-width: 480px) {
   .channel-item-link {
     padding: 6px 10px;

@@ -29,3 +29,10 @@
     overflow: visible;
   }
 }
+
+@media (max-width: 500px) {
+  .workspace-screen {
+    padding: 0;
+    width: 100%;
+  }
+}
